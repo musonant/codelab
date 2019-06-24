@@ -36,8 +36,6 @@ UserThumbnail.propTypes = {
   redirect: PropTypes.func,
 };
 
-// if a redirect url is not provided,
-// nothing should happen after thumbnail is pressed
 UserThumbnail.defaultProps = {
   redirect: () => {},
   imageUrl: null,
@@ -52,8 +50,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   hr: {
-    height: 0.3,
-    backgroundColor: SECONDARY_COLOR,
+    height: 1,
+    backgroundColor: SECONDARY_COLOR + 50,
     marginTop: 7,
     marginLeft: 65,
   },

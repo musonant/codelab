@@ -16,6 +16,7 @@ export default class HomeScreen extends Component {
     },
     { name: 'David Jones', username: 'gregory' },
     { name: 'Stone Philip', username: 'adjacent' },
+    { name: 'Stone Philip', username: 'adjacent' },
   ];
 
   viewProfile = username => {
