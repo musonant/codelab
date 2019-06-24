@@ -1,83 +1,33 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Image,
-  StatusBar,
-  Platform,
-  FlatList
-} from 'react-native';
+import React from 'react';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import { SearchBar } from './src/components/SearchBar';
-import { PRIMARY_COLOUR, SECONDARY_COLOR } from './src/helpers/constants';
-import { UserThumbnail } from './src/components/UserThumbnail';
+import HomeScreen from './src/screens/HomeScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
+import { PRIMARY_COLOR } from './src/helpers/constants';
 
-const STATUSBAR_HEIGHT = StatusBar.currentHeight || 20;
+const AppNavigator = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Profile: ProfileScreen,
+  },
+  {
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: PRIMARY_COLOR,
+        height: 0,
+        opacity: 0,
+      },
+    },
+  },
+);
 
-export default class App extends Component {
-  usersArray = [
-    { name: 'Emmanuel Musonant', username: 'Musonant' },
-    { name: 'David Jones', username: 'gregory' }
-  ];
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-        {Platform.os === 'android' && (
-          <StatusBar
-            style={styles.statusBar}
-            backgroundColor={PRIMARY_COLOUR}
-          />
-        )}
-        <SafeAreaView style={styles.container}>
-          <View style={styles.header}>
-            <Text style={styles.headerTitle}>Codelab</Text>
-          </View>
-          <View style={styles.contentArea}>
-            <SearchBar />
-            <Text style={styles.title}>Java Developers In Lagos</Text>
-
-            <FlatList
-              data={this.usersArray}
-              renderItem={({ item }) => (
-                <UserThumbnail name={item.name} username={item.username} />
-              )}
-            />
-          </View>
-        </SafeAreaView>
-      </View>
-    );
+    return <AppContainer />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  statusBar: {
-    height: STATUSBAR_HEIGHT
-  },
-  header: {
-    backgroundColor: SECONDARY_COLOR,
-    height: 80,
-    borderBottomLeftRadius: 60,
-    borderBottomRightRadius: 60,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  headerTitle: {
-    fontSize: 20,
-    paddingBottom: 20,
-    color: '#ffffff',
-    fontWeight: '500'
-  },
-  contentArea: {
-    paddingHorizontal: 30
-  },
-  title: {
-    fontWeight: '500',
-    marginTop: 10,
-    fontSize: 16
-  }
-});
