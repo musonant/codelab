@@ -13,9 +13,9 @@ export const UserThumbnail = ({
 }) => {
   const avatarSource = imageUrl ? { uri: imageUrl } : DEFAULT_USER_AVATAR;
   return (
-    <View>
-      <TouchableOpacity onPress={redirect()}>
-        <View style={styles.container}>
+    <View style={styles.container}>
+      <TouchableOpacity onPress={redirect}>
+        <View style={styles.content}>
           <Image style={styles.avatar} source={avatarSource} />
           <View style={styles.info}>
             <Text style={styles.mainText}>{name}</Text>
@@ -36,14 +36,18 @@ UserThumbnail.propTypes = {
   redirect: PropTypes.func,
 };
 
+// if a redirect url is not provided,
+// nothing should happen after thumbnail is pressed
 UserThumbnail.defaultProps = {
+  redirect: () => {},
   imageUrl: null,
-  redirect: null,
 };
 
 const styles = StyleSheet.create({
   container: {
     marginTop: 20,
+  },
+  content: {
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -57,6 +61,9 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
+    borderColor: '#aaa',
+    borderWidth: 0.5,
+    padding: 0,
   },
   info: {
     paddingLeft: 15,

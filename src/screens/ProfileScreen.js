@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
 export default class Profile extends Component {
   render() {
     return (
       <View>
-        <Text>d</Text>
+        <Text>Profile Screen</Text>
+        <Button title="go home" onPress={() => this.props.navigation.navigate('Home')} />
       </View>
     );
   }
