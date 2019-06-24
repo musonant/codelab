@@ -36,8 +36,6 @@ UserThumbnail.propTypes = {
   redirect: PropTypes.func,
 };
 
-// if a redirect url is not provided,
-// nothing should happen after thumbnail is pressed
 UserThumbnail.defaultProps = {
   redirect: () => {},
   imageUrl: null,
