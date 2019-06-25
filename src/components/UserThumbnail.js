@@ -30,7 +30,7 @@ export const UserThumbnail = ({
 };
 
 UserThumbnail.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   username: PropTypes.string.isRequired,
   imageUrl: PropTypes.string,
   redirect: PropTypes.func,
@@ -38,6 +38,7 @@ UserThumbnail.propTypes = {
 
 UserThumbnail.defaultProps = {
   redirect: () => {},
+  name: 'Unnamed',
   imageUrl: null,
 };
 

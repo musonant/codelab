@@ -3,11 +3,12 @@ module.exports = {
     browser: true,
     es6: true
   },
-  extends: 'airbnb',
+  extends: ['airbnb', 'plugin:prettier/recommended'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
   },
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
       jsx: true
@@ -23,6 +24,13 @@ module.exports = {
       { functions: false, classes: false, variables: false }
     ],
     'import/prefer-default-export': false,
-    'react/prefer-stateless-function': 0
+    'react/prefer-stateless-function': 0,
+    'no-param-reassign': 0,
+    'react/destructuring-assignment': false
+  },
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 };
