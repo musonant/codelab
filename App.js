@@ -13,7 +13,7 @@ const AppNavigator = createStackNavigator(
     Profile: ProfileScreen,
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Profile',
     defaultNavigationOptions: {
       headerStyle: {
         backgroundColor: PRIMARY_COLOR,
