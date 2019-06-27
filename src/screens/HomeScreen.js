@@ -1,29 +1,19 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, Platform, FlatList } from 'react-native';
+import {
+  StyleSheet, Text, View, SafeAreaView, StatusBar,
+} from 'react-native';
+import PropTypes from 'prop-types';
 
 import { SearchBar } from '../components/SearchBar';
 import { PRIMARY_COLOR } from '../helpers/constants';
-import { UserThumbnail } from '../components/UserThumbnail';
+import UsersList from '../components/UsersList';
 
 const STATUSBAR_HEIGHT = StatusBar.currentHeight || 20;
 
 export default class HomeScreen extends Component {
-  usersArray = [
-    {
-      name: 'Emmanuel Musonant',
-      username: 'Musonant',
-      imageUrl: 'https://themusonant.files.wordpress.com/2019/06/the-musonant.png?w=300',
-    },
-    { name: 'David Jones', username: 'gregory' },
-    { name: 'Stone Philip', username: 'adjacent' },
-    { name: 'Stone Philip', username: 'adjacent' },
-  ];
-
-  viewProfile = username => {
-    this.props.navigation.push('Profile', { username });
-  };
-
   render() {
+    const { navigation } = this.props;
+
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar
@@ -37,23 +27,18 @@ export default class HomeScreen extends Component {
         <View style={styles.contentArea}>
           <SearchBar />
           <Text style={styles.title}>Javascript Developers In Lagos</Text>
-          <FlatList
-            data={this.usersArray}
-            renderItem={({ item }) => (
-              <UserThumbnail
-                redirect={() => this.viewProfile('username')}
-                name={item.name}
-                username={item.username}
-                imageUrl={item.imageUrl}
-              />
-            )}
-            keyExtractor={(item, index) => index.toString()}
-          />
         </View>
+        <UsersList navigation={navigation} />
       </SafeAreaView>
     );
   }
 }
+
+HomeScreen.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 const styles = StyleSheet.create({
   container: {

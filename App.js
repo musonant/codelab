@@ -1,6 +1,8 @@
 import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { ApolloProvider } from 'react-apollo';
 
+import client from './src/apolloclient';
 import HomeScreen from './src/screens/HomeScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import { PRIMARY_COLOR } from './src/helpers/constants';
@@ -28,6 +30,10 @@ const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
   render() {
-    return <AppContainer />;
+    return (
+      <ApolloProvider client={client}>
+        <AppContainer />
+      </ApolloProvider>
+    );
   }
 }
