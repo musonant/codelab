@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet, Text, View, SafeAreaView, StatusBar,
-} from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 
 import { SearchBar } from '../components/SearchBar';

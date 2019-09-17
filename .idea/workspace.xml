@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9cc61d4-6c7b-4f25-9b43-e8c5ad107fe1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserThumbnail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserThumbnail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/apolloclient.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/apolloclient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/checkered_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InternetError.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InternetError.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UsersList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UsersList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/queries.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/queries.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/HomeScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/HomeScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/ProfileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/ProfileScreen.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +35,8 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">

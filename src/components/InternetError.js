@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  View, Text, StyleSheet, Image,
-} from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 import internetIcon from '../assets/img/internet.png';
 

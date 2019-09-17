@@ -1,13 +1,24 @@
 import { ApolloClient, HttpLink, InMemoryCache } from 'apollo-boost';
+import { AsyncStorage } from 'react-native';
 
-const client = new ApolloClient({
-  link: new HttpLink({
+import { resolvers, typeDefs } from './resolvers';
+
+const cache = new InMemoryCache();
+
+export const createClient = (accessToken = '') => {
+  const link = new HttpLink({
     uri: 'https://api.github.com/graphql',
     headers: {
-      Authorization: 'bearer dc1089285d905e917fbe3fd8b4e6b04884602743',
+      Authorization: `bearer ${accessToken}`,
     },
-  }),
-  cache: new InMemoryCache(),
-});
+  });
 
-export default client;
+  const client = new ApolloClient({
+    cache,
+    link,
+    typeDefs,
+    resolvers,
+  });
+
+  return client;
+};

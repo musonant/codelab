@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Ionicons } from '@expo/vector-icons';
-
 import {
   View,
   TouchableHighlight,
@@ -11,11 +9,10 @@ import {
   ImageBackground,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { Ionicons } from '@expo/vector-icons';
 
 import CustomButton from '../components/Button';
 import ArrowLeft from '../assets/img/arrow_left.png';
-import GithubIcon from '../assets/img/github_icon.png';
-import { PRIMARY_COLOR } from '../helpers/constants';
 
 export default class Profile extends Component {
   goBack = () => {
@@ -23,10 +20,23 @@ export default class Profile extends Component {
   };
 
   render() {
-    const source = this.props.source || { uri: null };
+    const {
+      navigation: { getParam },
+    } = this.props;
+    const user = getParam('user', {});
+
+    const {
+      login: username,
+      avatarUrl,
+      bio,
+      name,
+      repositories: { totalCount: repoCount },
+      starredRepositories: { totalCount: starredRepoCount },
+      url,
+    } = user;
     return (
       <SafeAreaView styles={styles.mainContainer}>
-        <ImageBackground source={source} style={styles.photo}>
+        <ImageBackground source={{ uri: avatarUrl }} style={styles.photo}>
           <TouchableHighlight onPress={this.goBack} style={styles.goBackBtn}>
             <View style={[styles.positionCenter, styles.arrowContainer]}>
               <Image source={ArrowLeft} style={styles.backArrow} />
@@ -34,33 +44,41 @@ export default class Profile extends Component {
           </TouchableHighlight>
         </ImageBackground>
         <View>
-          <Text style={styles.mainTitle}>Peter Ransom</Text>
+          <Text style={styles.mainTitle}>{name}</Text>
           <View style={styles.bioSection}>
             <View style={[styles.positionCenter, styles.username]}>
               <Ionicons name="logo-github" size={25} style={styles.gitIcon} />
-              <Text style={styles.usernameText}>username</Text>
+              <Text style={styles.usernameText}>{username}</Text>
             </View>
-            <Text style={styles.bioText}>
-              When we sniff after dead rats, {'\n'} It is not because we enjoy the deadly aroma
-            </Text>
+            <View style={{ height: 50 }}>
+              <Text style={styles.bioText}>{bio}</Text>
+            </View>
           </View>
           <View style={styles.stats}>
             <View style={[styles.positionCenter, styles.statsColumn]}>
               <View style={[styles.positionCenter, styles.statsCount]}>
-                <Text>423</Text>
+                <Text>{repoCount}</Text>
               </View>
               <Text>Repositories</Text>
             </View>
             <View style={[styles.positionCenter, styles.statsColumn]}>
               <View style={[styles.positionCenter, styles.statsCount]}>
-                <Text>323</Text>
+                <Text>{starredRepoCount}</Text>
               </View>
               <Text>Starred</Text>
             </View>
           </View>
           <View style={styles.actionButtons}>
-            <CustomButton style={styles.button} text="Share" pressHandler={() => {}} />
-            <CustomButton style={styles.button} text="Github Profile" pressHandler={() => {}} />
+            <CustomButton
+              style={styles.button}
+              text="Share"
+              pressHandler={() => {}}
+            />
+            <CustomButton
+              style={styles.button}
+              text="Github Profile"
+              pressHandler={() => {}}
+            />
           </View>
         </View>
       </SafeAreaView>
@@ -120,6 +138,9 @@ const styles = StyleSheet.create({
   bioText: {
     textAlign: 'center',
     color: '#47525E',
+    flex: 1,
+    flexWrap: 'wrap',
+    // backgroundColor: 'red',
   },
   username: {
     flexDirection: 'row',
